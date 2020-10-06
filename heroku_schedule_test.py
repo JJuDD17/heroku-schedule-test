@@ -16,18 +16,24 @@ def send_notification(token, chat_id, text):
 sched = BlockingScheduler()
 
 #@sched.scheduled_job('interval', minutes=3)
-def job():
+def notify_job():
     now = dt.datetime.now().strftime('%d.%m.%Y %H:%M:%S')
     text = f'[{now}] {TELEGRAM_MESSAGE}'
     send_notification(TELEGRAM_API_TOKEN, TELEGRAM_CHAT_ID, text)
 
+def sleep_job():
+    now = dt.datetime.now().strftime('%d.%m.%Y %H:%M:%S')
+    print(f'[{now}] sleeping 60 seconds...')
+    time.sleep(60)
 #@sched.scheduled_job('cron', day_of_week='mon-fri', hour=17)
 #def scheduled_job():
 #    print('This job is run every weekday at 5pm.')
 
-job()
-sched.add_job(job, 'interval', minutes=3)
-sched.add_job(job, 'cron', hour=17, minute=53)
+#notify_job()
+#sched.add_job(notify_job, 'interval', minutes=3)
+#sched.add_job(notify_job, 'cron', hour=17, minute=53)
+sched.add_job(sleep_job, 'interval', minutes=2)
+sleep_job()
 sched.start()
 #send_notification(TELEGRAM_API_TOKEN, TELEGRAM_CHAT_ID, TELEGRAM_MESSAGE)
 print('heroku_schedule_test.py is stopping')
