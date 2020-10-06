@@ -3,6 +3,8 @@ from requests import get
 import os
 import datetime as dt
 
+print('heroku_schedule_test.py is running')
+
 TELEGRAM_API_TOKEN = os.environ.get('TELEGRAM_API_TOKEN')
 TELEGRAM_CHAT_ID = os.environ.get('TELEGRAM_CHAT_ID')
 TELEGRAM_MESSAGE = os.environ.get('TELEGRAM_MESSAGE')
@@ -23,7 +25,9 @@ def job():
 #def scheduled_job():
 #    print('This job is run every weekday at 5pm.')
 
+job()
 sched.add_job(job, 'interval', minutes=3)
 sched.add_job(job, 'cron', hour=20, minute=40)
 sched.start()
 #send_notification(TELEGRAM_API_TOKEN, TELEGRAM_CHAT_ID, TELEGRAM_MESSAGE)
+print('heroku_schedule_test.py is stopping')
