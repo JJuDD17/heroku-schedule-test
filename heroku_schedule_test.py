@@ -27,7 +27,7 @@ def job():
 
 job()
 sched.add_job(job, 'interval', minutes=3)
-sched.add_job(job, 'cron', hour=20, minute=40)
+sched.add_job(job, 'cron', hour=17, minute=53)
 sched.start()
 #send_notification(TELEGRAM_API_TOKEN, TELEGRAM_CHAT_ID, TELEGRAM_MESSAGE)
 print('heroku_schedule_test.py is stopping')
