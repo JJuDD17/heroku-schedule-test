@@ -26,6 +26,9 @@ def sleep_job():
     now = dt.datetime.now().strftime('%d.%m.%Y %H:%M:%S')
     print(f'[{now}] sleeping 60 seconds...')
     time.sleep(60)
+    now = dt.datetime.now().strftime('%d.%m.%Y %H:%M:%S')
+    print(f'[{now}] sleeped 60 seconds')
+    
 #@sched.scheduled_job('cron', day_of_week='mon-fri', hour=17)
 #def scheduled_job():
 #    print('This job is run every weekday at 5pm.')
