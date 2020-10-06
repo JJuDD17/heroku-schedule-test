@@ -2,6 +2,7 @@ from apscheduler.schedulers.blocking import BlockingScheduler
 from requests import get
 import os
 import datetime as dt
+import time
 
 print('heroku_schedule_test.py is running')
 
